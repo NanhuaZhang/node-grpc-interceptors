@@ -1,6 +1,6 @@
 {
   "name": "@nanhuazhang/grpc-interceptors",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "test": "jest",
     "lint": "eslint . --fix",
