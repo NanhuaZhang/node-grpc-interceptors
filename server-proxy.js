@@ -16,20 +16,21 @@ const handler = {
                     const ctx = {
                         call,
                         service: lookup(name),
+                        response:null,
                     };
                     const newCallback = callback => {
-                        return (...args) => {
+                        return (err, value, ...rest) => {
                             ctx.status = {
                                 code: grpc.status.OK,
                             };
-                            const err = args[0];
                             if (err) {
                                 ctx.status = {
                                     code: grpc.status.UNKNOWN,
                                     details: err,
                                 };
                             }
-                            callback(...args);
+                            callback(err, value, ...rest);
+                            ctx.response = value;
                         };
                     };
 
